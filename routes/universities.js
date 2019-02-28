@@ -1,6 +1,8 @@
 var express = require("express");
 var router  = express.Router();
 var University = require("../models/university");
+var middleware = require("../middleware");
+
 
 // Index
 router.get("/", function(req,res) {
@@ -14,7 +16,7 @@ router.get("/", function(req,res) {
 });
 
 // Create
-router.post("/", function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
     // get data from for and add to universities array
     var name = req.body.name;
     var image = req.body.image;
@@ -33,7 +35,7 @@ router.post("/", function(req, res) {
 
 
 // New
-router.get("/new", function(req, res) {
+router.get("/new", middleware.isLoggedIn, function(req, res) {
     res.render("universities/new");
 });
 
