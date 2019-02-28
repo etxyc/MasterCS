@@ -2,11 +2,20 @@ var express = require("express");
 var router  = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var University = require("../models/university");
+
 
 // root route
-router.get("/", function(req, res) {
-    res.render("welcome");
+router.get("/", function(req,res) {
+    University.find({}, function(err, allUniversities) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("universities/index", {universities: allUniversities});
+        }
+    });
 });
+
 
 // show register form
 router.get("/register", function(req, res) {
