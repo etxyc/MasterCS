@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost/master_cs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-// seedDB();
+//seedDB();
 
 // passport configuration
 app.use(require("express-session")({
