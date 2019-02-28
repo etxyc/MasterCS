@@ -42,8 +42,10 @@ function seedDB() {
 
                     Comment.create(
                         {
-                            text: "Good Good Good",
-                            author: "Stephen"
+                            text: "A great university to study!",
+                            author: {
+                                username: "Stephen"
+                            }
                         }, function(err, comment) {
                             if(err) {
                                 console.log(err);
